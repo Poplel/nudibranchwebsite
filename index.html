@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nudibranch</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="window app-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Nudibranch</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
+                <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
+                <a href="https://poplel.xyz"><button aria-label="Close"></button></a>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <nav class="sidebar">
+                <div class="window">
+                    <div class="window-body brand">
+                        <img src="logo.png" alt="Nudibranch">
+                        <span class="brand-name">Nudibranch</span>
+                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                    </div>
+                </div>
+
+                <div class="window nav">
+                    <div class="window-body">
+                        <p class="nav-heading">Nudibranch</p>
+                        <ul>
+                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                        <hr>
+                        <p class="nav-heading">Elsewhere</p>
+                        <ul>
+                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
+                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="content sunken-panel">
+                <h1>Nudibranch</h1>
+                <p class="meta">A self-hosted music library manager &amp; player, with an app for iPhone, iPad and Mac.</p>
+
+                <div class="callout">
+                    <p style="margin:0;"><strong>Nudibranch is a remote.</strong> Your music, playlists and
+                    listening history live on a server you run. The app talks to that server and nothing else.</p>
+                </div>
+
+                <h2>What it does</h2>
+                <ul>
+                    <li>Browse and play your library — offline-first, with downloads for the road.</li>
+                    <li>Review and approve library changes: imports, downloads, metadata tools.</li>
+                    <li>Podcasts, playlists, and a wishlist for things you don't own yet.</li>
+                    <li>Background audio, CarPlay, lock-screen transport, Siri and Shortcuts.</li>
+                </ul>
+
+                <h2>Getting it</h2>
+                <p>The server is open source and available on
+                <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. The iOS app is on its way to
+                the App Store.</p>
+
+                <h2>Privacy</h2>
+                <p>Nudibranch collects nothing. There is no analytics, no tracking and no account with us —
+                read the <a href="privacy.html">privacy policy</a> for the details.</p>
+            </main>
+        </div>
+
+        <div class="status-bar">
+            <p class="status-bar-field">nudibranch.poplel.xyz</p>
+            <p class="status-bar-field">Self-hosted</p>
+            <p class="status-bar-field">Ready</p>
+        </div>
+    </div>
+</body>
+</html>
