@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nudibranch</title>
-    <meta name="description" content="Nudibranch — a self-hosted music library manager and player, with an app for iPhone, iPad and Mac.">
+    <title>Contact | Nudibranch</title>
+    <meta name="description" content="How to reach the developer of Nudibranch — support, bug reports and security disclosures.">
     <link rel="icon" href="/logo.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="/style.css">
@@ -12,7 +12,7 @@
 <body>
     <div class="window app-window">
         <div class="title-bar">
-            <div class="title-bar-text">Nudibranch</div>
+            <div class="title-bar-text">Nudibranch — Contact</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
                 <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
@@ -35,7 +35,7 @@
                     <div class="window-body">
                         <p class="nav-heading">Nudibranch</p>
                         <ul>
-                            <li><a href="/" class="active">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="/guide">Guide</a></li>
                             <li><a href="/faq">FAQ</a></li>
                             <li>
@@ -76,7 +76,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/contact" class="active">Contact</a></li>
                             <li><a href="/privacy-policy">Privacy Policy</a></li>
                         </ul>
                         <hr>
@@ -91,46 +91,90 @@
             <!-- ==== /SIDEBAR ==== -->
 
             <main class="content sunken-panel">
-                <h1>Nudibranch</h1>
-                <p class="meta">A self-hosted music library manager &amp; player, with an app for iPhone, iPad and Mac.</p>
+                <h1>Contact</h1>
+                <p class="meta">Nudibranch is made by one person. Replies are cheerful but not instant.</p>
 
                 <div class="callout">
-                    <p><strong>Nudibranch is a remote.</strong> Your music, playlists and
-                    listening history live on a server you run. The app talks to that server and nothing else.</p>
+                    <p><strong>Email:</strong> <a href="mailto:me@poplel.xyz">me@poplel.xyz</a> —
+                    for anything at all.</p>
                 </div>
 
-                <h2>What it does</h2>
-                <ul>
-                    <li>Browse and play your library — offline-first, with downloads for the road.</li>
-                    <li>Review and approve library changes: imports, downloads, metadata tools.</li>
-                    <li>Podcasts, playlists, and a wishlist for things you don't own yet.</li>
-                    <li>Background audio, lock-screen transport, Siri and Shortcuts.</li>
-                    <li>Automations: a trigger, an action, and a notification when it's done.</li>
+                <h2>Pick the right door</h2>
+                <ul class="cards">
+                    <li>
+                        <div class="card">
+                            <h3>Something's broken</h3>
+                            <p>Open an issue on
+                            <a href="https://github.com/Poplel/Nudibranch/issues">GitHub</a>. Include
+                            what you did, what happened, and the relevant lines from the application
+                            log — Activity → Log on the server.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>An idea or a feature request</h3>
+                            <p>Also GitHub issues. Say what you're trying to accomplish, not only the
+                            feature you have in mind — it often points somewhere better.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>A question about the app</h3>
+                            <p>Try the <a href="/faq">FAQ</a> and the <a href="/guide">Guide</a> first.
+                            If they don't cover it, email is fine.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>Privacy or data questions</h3>
+                            <p>The <a href="/privacy-policy">privacy policy</a> answers most of them.
+                            Anything it doesn't, email — it's the same address listed there.</p>
+                        </div>
+                    </li>
                 </ul>
 
-                <h2>How it fits together</h2>
-                <p>The server runs in Docker alongside <a href="https://jellyfin.org">Jellyfin</a>, which
-                holds and serves the music itself. Nudibranch handles everything around it — finding
-                music, tagging it, staging it, importing it, and keeping the library tidy — and gives
-                you a web player and an iOS app on top.</p>
-                <p>New to it? Start with the <a href="/guide">Guide</a>, or skim the
-                <a href="/faq">FAQ</a>.</p>
+                <h2>Security disclosures</h2>
+                <p>If you've found a vulnerability in the server, the app or the push relay, please email
+                <a href="mailto:me@poplel.xyz">me@poplel.xyz</a> rather than opening a public issue. A
+                description of the problem and how to reproduce it is plenty. You'll get an
+                acknowledgement, and credit in the fix if you'd like it.</p>
 
-                <h2>Getting it</h2>
-                <p>The server is open source and available on
-                <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. The iOS app is on its way to
-                the App Store.</p>
+                <h2>What this isn't</h2>
+                <p>Nudibranch servers are run by the people who own them. If you use someone else's
+                server and something about <em>your account</em> is wrong — a password, a permission, a
+                missing album — the person who runs it is the one who can fix it. There's no account with
+                us to reset.</p>
 
-                <h2>Privacy</h2>
-                <p>Nudibranch collects nothing. There is no analytics, no tracking and no account with us —
-                read the <a href="/privacy-policy">privacy policy</a> for the details.</p>
+                <h2>Elsewhere</h2>
+                <div class="table-scroll">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <td><a href="mailto:me@poplel.xyz">me@poplel.xyz</a></td>
+                            </tr>
+                            <tr>
+                                <th>Server source</th>
+                                <td><a href="https://github.com/Poplel/Nudibranch">github.com/Poplel/Nudibranch</a></td>
+                            </tr>
+                            <tr>
+                                <th>This site's source</th>
+                                <td><a href="https://github.com/Poplel/nudibranchwebsite">github.com/Poplel/nudibranchwebsite</a></td>
+                            </tr>
+                            <tr>
+                                <th>Everything else</th>
+                                <td><a href="https://poplel.xyz">poplel.xyz</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </main>
         </div>
 
         <div class="status-bar">
             <p class="status-bar-field">nudibranch.poplel.xyz</p>
-            <p class="status-bar-field">Self-hosted</p>
-            <p class="status-bar-field">Ready</p>
+            <p class="status-bar-field">Contact</p>
+            <p class="status-bar-field">me@poplel.xyz</p>
         </div>
     </div>
 </body>

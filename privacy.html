@@ -3,145 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The privacy policy moved to /privacy-policy. This stub stays behind so older
+         links (App Store listing, anything already published) keep working. -->
+    <meta http-equiv="refresh" content="0; url=/privacy-policy">
+    <link rel="canonical" href="https://nudibranch.poplel.xyz/privacy-policy">
+    <meta name="robots" content="noindex">
     <title>Privacy Policy | Nudibranch</title>
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="/logo.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="window app-window">
         <div class="title-bar">
             <div class="title-bar-text">Nudibranch — Privacy Policy</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
-                <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
-                <a href="https://poplel.xyz"><button aria-label="Close"></button></a>
-            </div>
         </div>
-
         <div class="app-body">
-            <nav class="sidebar">
-                <div class="window">
-                    <div class="window-body brand">
-                        <img src="logo.png" alt="Nudibranch">
-                        <span class="brand-name">Nudibranch</span>
-                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
-                    </div>
-                </div>
-
-                <div class="window nav">
-                    <div class="window-body">
-                        <p class="nav-heading">Nudibranch</p>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="privacy.html" class="active">Privacy Policy</a></li>
-                        </ul>
-                        <hr>
-                        <p class="nav-heading">Elsewhere</p>
-                        <ul>
-                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
-                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <main class="content sunken-panel">
-                <h1>Privacy Policy</h1>
-                <p class="meta">For the Nudibranch app for iPhone, iPad and Mac. Last updated 9 August 2026.</p>
-
-                <div class="callout">
-                    <p style="margin:0;"><strong>The short version.</strong> Nudibranch does not collect your
-                    personal data. There are no accounts with us, no analytics, no tracking, no advertising and
-                    no third-party trackers. The app is a remote control for a server that you run, and your
-                    data stays between your device and that server.</p>
-                </div>
-
-                <h2>1. What Nudibranch is</h2>
-                <p>Nudibranch is a client for a Nudibranch server — self-hosted software that you or someone
-                you know installs and operates. Your music files, playlists, listening history and account live
-                on that server. The app connects to the address you type in, and to nothing else unless this
-                policy says otherwise.</p>
-                <p>We do not operate a service that holds your library, and we have no way to see it.</p>
-
-                <h2>2. Information we collect</h2>
-                <p><strong>None.</strong> The app contains no analytics framework, no advertising identifier
-                usage, no crash-reporting service and no third-party software development kits that report to
-                anyone. Nothing about your usage is sent to the developer.</p>
-
-                <h2>3. Information stored on your device</h2>
-                <p>The app keeps the following locally so that it works quickly and offline:</p>
-                <ul>
-                    <li>The server address you entered, and a session token stored in the iOS Keychain.</li>
-                    <li>A cached copy of your library's metadata — artists, albums, tracks, playlists,
-                        podcasts — and cached artwork.</li>
-                    <li>Any audio you explicitly download for offline playback.</li>
-                    <li>Your app settings, such as appearance, equalizer curves and playback preferences.</li>
-                </ul>
-                <p>This information stays on your device. It is never sent anywhere except back to your own
-                server. Deleting the app removes all of it.</p>
-
-                <h2>4. Information sent to your server</h2>
-                <p>The app sends your server the requests you make of it: signing in, browsing, playing,
-                downloading, editing metadata, approving tasks, and reporting what is currently playing so
-                other devices on your server can see it. Your server records whatever its own configuration
-                records — typically play history, activity logs and the sessions signed in to it.</p>
-                <p>Because you operate the server, that data is under your control and is governed by your own
-                arrangements, not by us.</p>
-
-                <h2>5. Push notifications (optional)</h2>
-                <p>If you turn on notifications, Apple issues your device a push token. To keep self-hosted
-                servers from needing their own Apple developer credentials, the app registers that token with a
-                small relay service operated by the developer of Nudibranch, at
-                <em>nbpushproxy.pophosting.xyz</em>. Your server sends the relay a signed notification, and the
-                relay passes it to Apple for delivery to your device.</p>
-                <p>The relay stores only what delivery requires: the Apple push token, an Apple App Attest
-                registration proving the request came from a genuine copy of the app, the permission grant
-                linking your device to your server, and short-lived delivery records used to avoid sending the
-                same notification twice. Notification text passes through in order to be delivered.</p>
-                <p>The relay does not receive your username, password, library contents or listening history,
-                and there is no login associated with it. Turning notifications off in the app removes the
-                registration. Self-hosters may also point the app at their own relay or configure their server
-                with their own Apple push credentials, in which case no data reaches ours at all.</p>
-
-                <h2>6. Siri and Shortcuts (optional)</h2>
-                <p>If you use Siri or the Shortcuts app to control Nudibranch, Apple handles the voice
-                interaction and passes the app the text of what you asked for, which the app matches against
-                your library. Apple's handling of Siri requests is governed by
-                <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, not by this one.</p>
-
-                <h2>7. Third parties</h2>
-                <p>The app embeds no third-party analytics or advertising code. The only external parties
-                involved in normal use are Apple, for push notification delivery and Siri, and the notification
-                relay described above. Cover art and search results shown in the app are fetched by your
-                server, not by the app.</p>
-
-                <h2>8. Children</h2>
-                <p>Nudibranch is not directed at children and does not knowingly collect information from
-                anyone, including children.</p>
-
-                <h2>9. Your choices</h2>
-                <ul>
-                    <li>Sign out, or delete the app, to remove local data from your device.</li>
-                    <li>Turn notifications off to remove your push registration from the relay.</li>
-                    <li>Ask your server's administrator about data held on the server, or — if that is you —
-                        manage it directly.</li>
-                </ul>
-
-                <h2>10. Changes to this policy</h2>
-                <p>If this policy changes, the updated version will be posted on this page with a new date
-                above.</p>
-
-                <h2>11. Contact</h2>
-                <p>Questions about this policy can be sent to
-                <a href="mailto:me@poplel.xyz">me@poplel.xyz</a>.</p>
+            <main class="content sunken-panel center">
+                <h1>This page moved</h1>
+                <p>The privacy policy now lives at
+                <a href="/privacy-policy">nudibranch.poplel.xyz/privacy-policy</a>.</p>
+                <p class="muted">You should be redirected automatically.</p>
             </main>
         </div>
-
         <div class="status-bar">
             <p class="status-bar-field">nudibranch.poplel.xyz</p>
-            <p class="status-bar-field">Privacy Policy</p>
-            <p class="status-bar-field">Updated 9 Aug 2026</p>
+            <p class="status-bar-field">Redirecting…</p>
         </div>
     </div>
 </body>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide | Nudibranch</title>
+    <meta name="description" content="Getting started with Nudibranch — running the server, connecting the app, and the day-to-day workflow.">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="window app-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Nudibranch — Guide</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
+                <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
+                <a href="https://poplel.xyz"><button aria-label="Close"></button></a>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <!-- ==== SIDEBAR (kept identical on every page — update all pages together) ==== -->
+            <nav class="sidebar">
+                <div class="window">
+                    <div class="window-body brand">
+                        <img src="/logo.png" alt="Nudibranch">
+                        <span class="brand-name">Nudibranch</span>
+                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                    </div>
+                </div>
+
+                <div class="window nav">
+                    <div class="window-body">
+                        <p class="nav-heading">Nudibranch</p>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/guide" class="active">Guide</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li>
+                                <a href="/docs">Documentation</a>
+                                <!-- Docs tree. Pages are not written yet; when a page lands,
+                                     swap its <span class="pending"> for
+                                     <a href="/docs/<slug>">…</a>. Planned slugs match the
+                                     filenames in NudibranchDocs. -->
+                                <ul class="tree-view">
+                                    <li>
+                                        <details>
+                                            <summary class="section">Server</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Architecture</span></li>
+                                                <li><span class="pending" title="Coming soon">API Reference</span></li>
+                                                <li><span class="pending" title="Coming soon">Background Tasks</span></li>
+                                                <li><span class="pending" title="Coming soon">Permissions</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details>
+                                            <summary class="section">iOS</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">iOS App</span></li>
+                                                <li><span class="pending" title="Coming soon">Push Implementation</span></li>
+                                                <li><span class="pending" title="Coming soon">APNS Proxy</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details>
+                                            <summary class="section">Web player</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Player Diagnostics</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        </ul>
+                        <hr>
+                        <p class="nav-heading">Elsewhere</p>
+                        <ul>
+                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
+                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- ==== /SIDEBAR ==== -->
+
+            <main class="content sunken-panel">
+                <h1>Guide</h1>
+                <p class="meta">From nothing to a working library, in the order you'll actually do it.</p>
+
+                <div class="callout">
+                    <p><strong>Before you start.</strong> Nudibranch is a companion to
+                    <a href="https://jellyfin.org">Jellyfin</a>, not a replacement for it. Jellyfin holds
+                    and serves the music; Nudibranch finds it, tags it, imports it, and gives you a player
+                    and an app on top. You'll want Jellyfin running first.</p>
+                </div>
+
+                <h2>What you need</h2>
+                <ul>
+                    <li>A machine that can run Docker and Docker Compose — a NAS, a home server, a VPS.</li>
+                    <li>A Jellyfin server with a music library, and an admin API key for it.</li>
+                    <li>Somewhere to keep the files: Nudibranch wants its own volumes for the library,
+                        staging, downloads, trash, backups and podcasts.</li>
+                    <li>Optional: a <a href="https://github.com/slskd/slskd">slskd</a> instance, if you want
+                        Nudibranch to fetch things for you.</li>
+                    <li>Optional: an iPhone, iPad or Mac for the app.</li>
+                </ul>
+
+                <h2>Setting up the server</h2>
+                <ol class="steps">
+                    <li>
+                        <h3>Get the code</h3>
+                        <p>Clone the repository onto the machine that will run it.</p>
+<pre><code>git clone https://github.com/Poplel/Nudibranch.git
+cd Nudibranch</code></pre>
+                    </li>
+                    <li>
+                        <h3>Write your <code>.env</code></h3>
+                        <p>Copy <code>.env.example</code> and fill it in. The settings that matter on day
+                        one are the public URL, the Jellyfin URL and API key, the first admin PIN, and
+                        the API key placeholder — change both of those before the server is reachable
+                        from anywhere but your own network.</p>
+<pre><code>cp .env.example .env
+$EDITOR .env</code></pre>
+                        <p class="muted">slskd, Spotify, AcoustID and push settings can wait; add them
+                        when you want the features they unlock.</p>
+                    </li>
+                    <li>
+                        <h3>Bring it up</h3>
+<pre><code>docker compose up -d</code></pre>
+                        <p>That starts the API, the background worker and the web frontend. The worker
+                        and the API share one SQLite database and the same file volumes, so they need to
+                        be pointed at the same paths.</p>
+                    </li>
+                    <li>
+                        <h3>Sign in and lock it down</h3>
+                        <p>Open the public URL, sign in as the first admin using the PIN you set, and
+                        immediately change the password and rotate the pre-seeded API key. If the server
+                        is going to be reachable from the internet, put it behind HTTPS — a reverse proxy
+                        with a certificate, or a tunnel.</p>
+                    </li>
+                    <li>
+                        <h3>Point it at Jellyfin</h3>
+                        <p>Check the integration settings resolve: Nudibranch should be able to reach
+                        Jellyfin, and Jellyfin's music library should point at the same folder Nudibranch
+                        imports into. Run a scan from the Tools menu to confirm the round trip works.</p>
+                    </li>
+                </ol>
+
+                <h2>Connecting the app</h2>
+                <ol class="steps">
+                    <li>
+                        <h3>Enter your server address</h3>
+                        <p>The app asks for the address of your server — the same URL you use in a
+                        browser. It talks to that and nothing else.</p>
+                    </li>
+                    <li>
+                        <h3>Sign in</h3>
+                        <p>Use your Nudibranch username and password. The app stores a session token in
+                        the iOS Keychain and names the session after your device, so you can see and
+                        revoke it later under Settings → Sessions.</p>
+                    </li>
+                    <li>
+                        <h3>Sync and download</h3>
+                        <p>The library's metadata syncs down and is cached, so browsing works offline.
+                        Anything you want to <em>hear</em> offline needs an explicit download —
+                        tap the download control on a track, album or playlist.</p>
+                    </li>
+                    <li>
+                        <h3>Turn on notifications, if you want them</h3>
+                        <p>Notifications tell you when a download finishes, a wishlist item is matched, a
+                        podcast episode lands, or something needs approving. See the
+                        <a href="/privacy-policy">privacy policy</a> for exactly what the push relay
+                        handles.</p>
+                    </li>
+                </ol>
+
+                <h2>The day-to-day workflow</h2>
+                <p>Almost everything that changes your library goes through the same shape: something is
+                <strong>proposed</strong>, you <strong>review</strong> it, and it happens once
+                <strong>approved</strong>.</p>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>You want to…</th><th>Where</th><th>What happens</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Add music you don't own</td>
+                                <td>Discover → Wishlist</td>
+                                <td>The request becomes a proposal; approving it queues a download,
+                                which imports itself when it lands.</td>
+                            </tr>
+                            <tr>
+                                <td>Import files you already have</td>
+                                <td>Import (server/web only)</td>
+                                <td>Files in staging are read, matched against MusicBrainz and proposed
+                                as an import batch.</td>
+                            </tr>
+                            <tr>
+                                <td>Fix tags, covers or duplicates</td>
+                                <td>Library → edit, or Tools</td>
+                                <td>Edits and maintenance tools stage their changes as proposals rather
+                                than rewriting files behind your back.</td>
+                            </tr>
+                            <tr>
+                                <td>See what the server is doing</td>
+                                <td>Task Queue and Activity</td>
+                                <td>Background tasks, their progress and the application log.</td>
+                            </tr>
+                            <tr>
+                                <td>Make something happen on a schedule</td>
+                                <td>Automations</td>
+                                <td>A trigger (time, interval, event, webhook or Shortcut), an action,
+                                and an optional notification.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Adding other people</h2>
+                <p>Users get permissions per flow — library, discover, imports, approvals, playlists,
+                activity, tools, automations, users. Admins bypass all of them. The practical version:
+                give a housemate <code>library:view</code> and <code>discover</code> and they can listen
+                and ask for things, without being able to reorganise the library or approve their own
+                downloads. Grant <code>wishlist:approve_all</code> only to people you're happy having
+                the last word.</p>
+
+                <h2>Where to go next</h2>
+                <ul>
+                    <li><a href="/faq">FAQ</a> — the short answers.</li>
+                    <li><a href="/docs">Documentation</a> — the full reference for the API, tasks,
+                    permissions and the iOS integration.</li>
+                    <li><a href="/contact">Contact</a> — when something here doesn't match reality.</li>
+                </ul>
+            </main>
+        </div>
+
+        <div class="status-bar">
+            <p class="status-bar-field">nudibranch.poplel.xyz</p>
+            <p class="status-bar-field">Guide</p>
+            <p class="status-bar-field">Getting started</p>
+        </div>
+    </div>
+</body>
+</html>

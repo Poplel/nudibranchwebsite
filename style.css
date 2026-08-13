@@ -27,11 +27,12 @@ body {
 /* ---- Sidebar ---- */
 
 .sidebar {
-    width: 190px;
+    width: 210px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 0;
 }
 
 .brand {
@@ -61,7 +62,15 @@ body {
 
 .nav {
     flex-grow: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav > .window-body {
     overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
 }
 
 .nav ul {
@@ -94,6 +103,47 @@ body {
     margin: 0;
 }
 
+/* ---- Docs tree in the sidebar ---- */
+
+/* Padding is left to 98.css (6px) — its dotted connector offsets assume it. */
+.nav .tree-view {
+    margin: 3px 0 4px 8px;
+    font-size: 11px;
+}
+
+.nav .tree-view ul { list-style: none; }
+
+.nav .tree-view a {
+    display: inline-block;
+    padding: 1px 3px;
+}
+
+.nav .tree-view a.active {
+    background: #000080;
+    color: #fff;
+}
+
+.nav .tree-view summary {
+    cursor: pointer;
+    padding: 1px 0;
+}
+
+.nav .tree-view summary.section { font-weight: bold; }
+
+/* Docs pages that don't exist yet — rendered as plain text, not links. */
+.nav .tree-view .pending {
+    display: inline-block;
+    padding: 1px 3px;
+    color: #808080;
+    cursor: default;
+}
+
+.nav-note {
+    font-size: 11px;
+    color: #404040;
+    margin: 2px 6px 0;
+}
+
 /* ---- Content ---- */
 
 .content {
@@ -121,7 +171,9 @@ body {
 
 .content p, .content li { line-height: 1.5; }
 
-.content ul { margin: 6px 0; padding-left: 22px; }
+.content ul, .content ol { margin: 6px 0; padding-left: 22px; }
+
+.content li { margin: 2px 0; }
 
 .meta {
     font-size: 11px;
@@ -134,6 +186,9 @@ body {
     background: #C0C0C0;
 }
 
+.callout p:first-child { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+
 hr {
     border: none;
     border-top: 1px solid #808080;
@@ -141,10 +196,143 @@ hr {
     margin: 10px 0;
 }
 
+/* ---- Steps (Guide) ---- */
+
+.steps { counter-reset: step; padding-left: 0; list-style: none; margin: 10px 0; }
+
+.steps > li {
+    position: relative;
+    padding: 0 0 0 30px;
+    margin: 0 0 16px;
+}
+
+.steps > li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: bold;
+    background: #C0C0C0;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff,
+                inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+.steps h3 { margin-top: 0; }
+
+/* ---- Code ---- */
+
+pre, code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+}
+
+pre {
+    background: #000080;
+    color: #fff;
+    padding: 8px 10px;
+    margin: 8px 0;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+pre code { color: inherit; }
+
+:not(pre) > code {
+    background: #C0C0C0;
+    padding: 0 3px;
+}
+
+/* ---- Tables ---- */
+
+.content table {
+    border-collapse: collapse;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.content th, .content td {
+    border: 1px solid #808080;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.content th { background: #C0C0C0; }
+
+.table-scroll { overflow-x: auto; }
+
+/* ---- FAQ ---- */
+
+.faq { margin: 10px 0 0; }
+
+.faq details {
+    border-bottom: 1px solid #808080;
+    padding: 6px 2px;
+}
+
+.faq details[open] { padding-bottom: 10px; }
+
+.faq summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 0;
+}
+
+.faq summary:focus { outline: 1px dotted #000; }
+
+.faq details p { margin: 8px 0 0; }
+.faq details ul { margin-top: 8px; }
+
+/* ---- Cards (Docs index / Contact) ---- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cards li { margin: 0; }
+
+.card {
+    height: 100%;
+    padding: 8px 10px;
+    background: #C0C0C0;
+}
+
+.card h3 { margin: 0 0 4px; font-size: 12px; }
+
+.card p { margin: 0; font-size: 11px; line-height: 1.45; }
+
+.card .soon {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #404040;
+}
+
+/* ---- Misc ---- */
+
+.field-row { margin: 6px 0; }
+
+.muted { color: #404040; }
+
+.center { text-align: center; }
+
 @media (max-width: 700px) {
+    body { height: auto; min-height: 100vh; }
     .app-body { flex-direction: column; }
     .sidebar { width: 100%; }
     .brand { flex-direction: row; }
     .brand img { width: 48px; height: 48px; }
     .brand .brand-sub { display: none; }
+    .nav > .window-body { overflow-y: visible; }
 }

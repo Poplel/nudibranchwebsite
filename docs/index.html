@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Nudibranch</title>
+    <meta name="description" content="Technical documentation for the Nudibranch server, API, background tasks, permissions and iOS app.">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="window app-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Nudibranch — Documentation</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
+                <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
+                <a href="https://poplel.xyz"><button aria-label="Close"></button></a>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <!-- ==== SIDEBAR (kept identical on every page — update all pages together) ====
+                 On docs pages the tree is expanded (<details open>); elsewhere it starts closed. -->
+            <nav class="sidebar">
+                <div class="window">
+                    <div class="window-body brand">
+                        <img src="/logo.png" alt="Nudibranch">
+                        <span class="brand-name">Nudibranch</span>
+                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                    </div>
+                </div>
+
+                <div class="window nav">
+                    <div class="window-body">
+                        <p class="nav-heading">Nudibranch</p>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/guide">Guide</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li>
+                                <a href="/docs" class="active">Documentation</a>
+                                <!-- Docs tree. Pages are not written yet; when a page lands,
+                                     swap its <span class="pending"> for
+                                     <a href="/docs/<slug>">…</a>. Planned slugs match the
+                                     filenames in NudibranchDocs. -->
+                                <ul class="tree-view">
+                                    <li>
+                                        <details open>
+                                            <summary class="section">Server</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Architecture</span></li>
+                                                <li><span class="pending" title="Coming soon">API Reference</span></li>
+                                                <li><span class="pending" title="Coming soon">Background Tasks</span></li>
+                                                <li><span class="pending" title="Coming soon">Permissions</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details open>
+                                            <summary class="section">iOS</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">iOS App</span></li>
+                                                <li><span class="pending" title="Coming soon">Push Implementation</span></li>
+                                                <li><span class="pending" title="Coming soon">APNS Proxy</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details open>
+                                            <summary class="section">Web player</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Player Diagnostics</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                </ul>
+                                <p class="nav-note">Pages coming soon.</p>
+                            </li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        </ul>
+                        <hr>
+                        <p class="nav-heading">Elsewhere</p>
+                        <ul>
+                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
+                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- ==== /SIDEBAR ==== -->
+
+            <main class="content sunken-panel">
+                <h1>Documentation</h1>
+                <p class="meta">The technical reference for running Nudibranch and building against it.</p>
+
+                <div class="callout">
+                    <p><strong>Being written up.</strong> The pages below are drafted but not published
+                    here yet — the tree in the sidebar is where they'll appear. In the meantime, the
+                    <a href="/guide">Guide</a> covers setup, and your own server exposes live API docs at
+                    <code>/docs</code> (Swagger UI) and <code>/api/v1/openapi.json</code>.</p>
+                </div>
+
+                <h2>Server</h2>
+                <ul class="cards">
+                    <li>
+                        <div class="card">
+                            <h3>Architecture</h3>
+                            <p>Components, the SQLite schema, the download pipeline, external service
+                            dependencies and every configuration variable.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>API Reference</h3>
+                            <p>Every REST endpoint with its request and response shapes.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>Background Tasks</h3>
+                            <p>Each task type the worker handles, plus scheduled work — payload fields
+                            and result shapes.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>Permissions</h3>
+                            <p>All permission values, the admin boundary, role presets and per-endpoint
+                            requirements.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <h2>iOS</h2>
+                <ul class="cards">
+                    <li>
+                        <div class="card">
+                            <h3>iOS App</h3>
+                            <p>Integration guide: authentication, streaming, background downloads, push
+                            notifications and deep links.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>Push Implementation</h3>
+                            <p>App Attest and the per-pairing grant flow — every request, and the exact
+                            bytes to sign.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <h3>APNS Proxy</h3>
+                            <p>Deploying NudibranchProxy: security model and endpoint reference, for
+                            running your own relay.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <h2>Web player</h2>
+                <ul class="cards">
+                    <li>
+                        <div class="card">
+                            <h3>Player Diagnostics</h3>
+                            <p>The web player's client-side "stats for geeks" overlay, field by field.</p>
+                            <span class="soon">Coming soon</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <h2>Quick links on your own server</h2>
+                <div class="table-scroll">
+                    <table>
+                        <tbody>
+                            <tr><th>Swagger UI</th><td><code>http://&lt;host&gt;/docs</code></td></tr>
+                            <tr><th>OpenAPI schema</th><td><code>http://&lt;host&gt;/api/v1/openapi.json</code></td></tr>
+                            <tr><th>Health check</th><td><code>GET /healthz</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+
+        <div class="status-bar">
+            <p class="status-bar-field">nudibranch.poplel.xyz</p>
+            <p class="status-bar-field">Documentation</p>
+            <p class="status-bar-field">8 pages pending</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Nudibranch</title>
+    <meta name="description" content="Frequently asked questions about Nudibranch — the self-hosted music library manager and player.">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="window app-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Nudibranch — FAQ</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="document.exitFullscreen()"></button>
+                <button aria-label="Maximize" onclick="document.documentElement.requestFullscreen()"></button>
+                <a href="https://poplel.xyz"><button aria-label="Close"></button></a>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <!-- ==== SIDEBAR (kept identical on every page — update all pages together) ==== -->
+            <nav class="sidebar">
+                <div class="window">
+                    <div class="window-body brand">
+                        <img src="/logo.png" alt="Nudibranch">
+                        <span class="brand-name">Nudibranch</span>
+                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                    </div>
+                </div>
+
+                <div class="window nav">
+                    <div class="window-body">
+                        <p class="nav-heading">Nudibranch</p>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/guide">Guide</a></li>
+                            <li><a href="/faq" class="active">FAQ</a></li>
+                            <li>
+                                <a href="/docs">Documentation</a>
+                                <!-- Docs tree. Pages are not written yet; when a page lands,
+                                     swap its <span class="pending"> for
+                                     <a href="/docs/<slug>">…</a>. Planned slugs match the
+                                     filenames in NudibranchDocs. -->
+                                <ul class="tree-view">
+                                    <li>
+                                        <details>
+                                            <summary class="section">Server</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Architecture</span></li>
+                                                <li><span class="pending" title="Coming soon">API Reference</span></li>
+                                                <li><span class="pending" title="Coming soon">Background Tasks</span></li>
+                                                <li><span class="pending" title="Coming soon">Permissions</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details>
+                                            <summary class="section">iOS</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">iOS App</span></li>
+                                                <li><span class="pending" title="Coming soon">Push Implementation</span></li>
+                                                <li><span class="pending" title="Coming soon">APNS Proxy</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li>
+                                        <details>
+                                            <summary class="section">Web player</summary>
+                                            <ul>
+                                                <li><span class="pending" title="Coming soon">Player Diagnostics</span></li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        </ul>
+                        <hr>
+                        <p class="nav-heading">Elsewhere</p>
+                        <ul>
+                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
+                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- ==== /SIDEBAR ==== -->
+
+            <main class="content sunken-panel">
+                <h1>FAQ</h1>
+                <p class="meta">Short answers. The <a href="/guide">Guide</a> has the long ones.</p>
+
+                <h2>The basics</h2>
+                <div class="faq">
+                    <details open>
+                        <summary>What is Nudibranch, exactly?</summary>
+                        <p>A self-hosted music library manager and player. It runs on your own server
+                        alongside <a href="https://jellyfin.org">Jellyfin</a>, handles the fiddly parts of
+                        keeping a music library — finding, downloading, tagging, staging, importing,
+                        deduplicating — and gives you a web player and an app for iPhone, iPad and Mac.</p>
+                    </details>
+
+                    <details>
+                        <summary>Do I need Jellyfin?</summary>
+                        <p>Yes. Jellyfin is the music server; Nudibranch is the layer around it. Playlists
+                        are stored in Jellyfin when it's configured, play history is mirrored to it, and
+                        imports end up in the folder Jellyfin scans.</p>
+                    </details>
+
+                    <details>
+                        <summary>Does it replace Jellyfin's own music apps?</summary>
+                        <p>It can. The Nudibranch app is a full player — background audio, lock-screen
+                        transport, crossfade, ReplayGain, an equalizer, offline downloads — but its
+                        headline feature is management: reviewing and approving what happens to your
+                        library, from your phone.</p>
+                    </details>
+
+                    <details>
+                        <summary>Is it free?</summary>
+                        <p>The server is open source and free, on
+                        <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. There is no
+                        subscription, no account with us, and nothing to pay for on the server side.</p>
+                    </details>
+
+                    <details>
+                        <summary>What does it run on?</summary>
+                        <p>Docker Compose — an API container, a background worker and a web frontend,
+                        with a SQLite database and a handful of file volumes. Anything that runs Docker
+                        will do: a NAS, an old laptop, a VPS.</p>
+                    </details>
+                </div>
+
+                <h2>The app</h2>
+                <div class="faq">
+                    <details>
+                        <summary>Where do I get the app?</summary>
+                        <p>It's on its way to the App Store. Until then, keep an eye on the
+                        <a href="https://github.com/Poplel/Nudibranch">repository</a> — or
+                        <a href="/contact">get in touch</a> if you want to test it.</p>
+                    </details>
+
+                    <details>
+                        <summary>Is there an Android version?</summary>
+                        <p>No. The app is SwiftUI, for iPhone, iPad and Mac. Everything the app does goes
+                        through the server's REST API, though, so any client is possible in principle —
+                        and the web player works in any browser on any platform.</p>
+                    </details>
+
+                    <details>
+                        <summary>Does playback work offline?</summary>
+                        <p>Browsing does, always — the library's metadata is cached on the device.
+                        Listening offline needs an explicit download of the tracks, albums or playlists
+                        you want to take with you.</p>
+                    </details>
+
+                    <details>
+                        <summary>What about CarPlay?</summary>
+                        <p>Not yet. It's a priority, but it needs Apple's CarPlay audio entitlement
+                        before it can ship.</p>
+                    </details>
+
+                    <details>
+                        <summary>Can I use Siri or Shortcuts?</summary>
+                        <p>Yes. The app exposes Shortcuts actions and responds to Siri requests, and it
+                        can act as a remote playback target — a Shortcut or an automation can tell a
+                        specific device to start playing something.</p>
+                    </details>
+                </div>
+
+                <h2>Privacy and notifications</h2>
+                <div class="faq">
+                    <details>
+                        <summary>What data do you collect?</summary>
+                        <p>None. No analytics, no crash reporting, no advertising identifiers, no
+                        third-party SDKs that phone home, and no account with us. The full detail is in
+                        the <a href="/privacy-policy">privacy policy</a>.</p>
+                    </details>
+
+                    <details>
+                        <summary>Then how do push notifications work?</summary>
+                        <p>Apple requires developer credentials to send a push, which self-hosters
+                        shouldn't need to obtain. So the app registers its Apple push token with a small
+                        relay run by the developer; your server signs a notification, the relay hands it
+                        to Apple, Apple delivers it. The relay never sees your username, password,
+                        library or listening history.</p>
+                        <p>If you'd rather it didn't exist: point the app at your own relay, or give your
+                        server its own Apple push credentials and skip the relay entirely.</p>
+                    </details>
+
+                    <details>
+                        <summary>Does my server need to be exposed to the internet?</summary>
+                        <p>Only if you want to use it away from home. Plenty of people run it on the LAN
+                        and reach it over a VPN or a tunnel. If you do expose it, put it behind HTTPS and
+                        change the default admin PIN and pre-seeded API key first.</p>
+                    </details>
+                </div>
+
+                <h2>Libraries and users</h2>
+                <div class="faq">
+                    <details>
+                        <summary>Where does the music come from?</summary>
+                        <p>Wherever you point it. Nudibranch imports files you already have, and — if you
+                        configure them — can fetch from sources like a
+                        <a href="https://github.com/slskd/slskd">slskd</a> instance or yt-dlp. What you
+                        download, and whether you're entitled to it, is between you and the law where you
+                        live.</p>
+                    </details>
+
+                    <details>
+                        <summary>Will it reorganise my existing files?</summary>
+                        <p>Not without asking. Imports, metadata edits and maintenance tools stage their
+                        changes as proposals that you approve or reject. Deletions go to a trash folder
+                        and are kept for a configurable retention period before being purged.</p>
+                    </details>
+
+                    <details>
+                        <summary>Can other people use my server?</summary>
+                        <p>Yes — it's multi-user, with per-flow permissions and per-device sessions. You
+                        can give someone the ability to listen and request music without giving them the
+                        ability to approve downloads or run maintenance tools.</p>
+                    </details>
+
+                    <details>
+                        <summary>Can I automate things?</summary>
+                        <p>Yes. Automations are trigger → action → notify: fire on a schedule, an
+                        interval, a webhook, a Shortcut, or an event like a finished download or a matched
+                        wishlist item.</p>
+                    </details>
+                </div>
+
+                <h2>Still stuck?</h2>
+                <p>The <a href="/docs">documentation</a> goes deeper, and the
+                <a href="/contact">contact page</a> has the ways to reach a human.</p>
+            </main>
+        </div>
+
+        <div class="status-bar">
+            <p class="status-bar-field">nudibranch.poplel.xyz</p>
+            <p class="status-bar-field">FAQ</p>
+            <p class="status-bar-field">Ready</p>
+        </div>
+    </div>
+</body>
+</html>
