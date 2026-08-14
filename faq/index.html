@@ -43,45 +43,29 @@
 
             <main class="content sunken-panel">
                 <h1>FAQ</h1>
-                <p class="meta">Short answers. The <a href="/guide">Guide</a> will have the long ones.</p>
+                <p class="meta">Short answers to common questions.</p>
 
                 <h2>The basics</h2>
                 <div class="faq">
                     <details open>
                         <summary>What is Nudibranch, exactly?</summary>
-                        <p>A self-hosted music library manager and player. It runs on your own server
-                        alongside <a href="https://jellyfin.org">Jellyfin</a>, handles the fiddly parts of
-                        keeping a music library — finding, downloading, tagging, staging, importing,
-                        deduplicating — and gives you a web player and an app for iPhone, iPad and Mac.</p>
+                        <p>A self-hosted music library manager and player with support for podcasts. Nudibranch is split into two parts: the server, and the client. The server can run without a client, but the client needs the server to function. You can use the ios app or web client to access your server.</p>
                     </details>
 
                     <details>
                         <summary>Do I need Jellyfin?</summary>
-                        <p>Yes. Jellyfin is the music server; Nudibranch is the layer around it. Playlists
-                        are stored in Jellyfin when it's configured, play history is mirrored to it, and
-                        imports end up in the folder Jellyfin scans.</p>
-                    </details>
-
-                    <details>
-                        <summary>Does it replace Jellyfin's own music apps?</summary>
-                        <p>It can. The Nudibranch app is a full player — background audio, lock-screen
-                        transport, crossfade, ReplayGain, an equalizer, offline downloads — but its
-                        headline feature is management: reviewing and approving what happens to your
-                        library, from your phone.</p>
+                        <p>No! Jellyfin is entirely optional. Nudibranch can run as a standalone music library manager and player. If Jellyfin is connected and users are paired to their jellyfin counterparts, there are additional features.</p>
                     </details>
 
                     <details>
                         <summary>Is it free?</summary>
                         <p>The server is open source and free, on
-                        <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. There is no
-                        subscription, no account with us, and nothing to pay for on the server side.</p>
+                        <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. There are costs associated with running the server yourself, but the software itself is free to use.</p>
                     </details>
 
                     <details>
                         <summary>What does it run on?</summary>
-                        <p>Docker Compose — an API container, a background worker and a web frontend,
-                        with a SQLite database and a handful of file volumes. Anything that runs Docker
-                        will do: a NAS, an old laptop, a VPS.</p>
+                        <p>Nudibranch runs in x86 Docker. You can run it on any computer, VPS, or VM that has an x86 processor and Docker installed. ARM support is planned in the near future for Raspberry Pi and similar devices.</p>
                     </details>
                 </div>
 
@@ -89,36 +73,22 @@
                 <div class="faq">
                     <details>
                         <summary>Where do I get the app?</summary>
-                        <p>It's on its way to the App Store. Until then, keep an eye on the
-                        <a href="https://github.com/Poplel/Nudibranch">repository</a> — or
-                        <a href="/contact">get in touch</a> if you want to test it.</p>
+                        <p>The app is not finished yet, but will be in the app store once it's ready. A link to the app store will be posted when it's available.</p>
                     </details>
 
                     <details>
                         <summary>Is there an Android version?</summary>
-                        <p>No. The app is SwiftUI, for iPhone, iPad and Mac. Everything the app does goes
-                        through the server's REST API, though, so any client is possible in principle —
-                        and the web player works in any browser on any platform.</p>
+                        <p>Not yet! The app is currently only available for iOS devices, however the Web UI is mobile friendly.</p>
                     </details>
 
                     <details>
                         <summary>Does playback work offline?</summary>
-                        <p>Browsing does, always — the library's metadata is cached on the device.
-                        Listening offline needs an explicit download of the tracks, albums or playlists
-                        you want to take with you.</p>
+                        <p>Offline playback is available on the Mac and iOS apps, but not on the Web UI. You can play music over your local network without an internet connection.</p>
                     </details>
 
                     <details>
-                        <summary>What about CarPlay?</summary>
-                        <p>Not yet. It's a priority, but it needs Apple's CarPlay audio entitlement
-                        before it can ship.</p>
-                    </details>
-
-                    <details>
-                        <summary>Can I use Siri or Shortcuts?</summary>
-                        <p>Yes. The app exposes Shortcuts actions and responds to Siri requests, and it
-                        can act as a remote playback target — a Shortcut or an automation can tell a
-                        specific device to start playing something.</p>
+                        <summary>How do I set up Nudibranch?</summary>
+                        <p>Visit the <a href="/guide">install guide</a> for instructions.</p>
                     </details>
                 </div>
 
@@ -126,27 +96,20 @@
                 <div class="faq">
                     <details>
                         <summary>What data do you collect?</summary>
-                        <p>None. No analytics, no crash reporting, no advertising identifiers, no
-                        third-party SDKs that phone home, and no account with us. The full detail is in
-                        the <a href="/privacy-policy">privacy policy</a>.</p>
+                        <p>None. You host your own server, and no data is sent to any third parties.</p>
                     </details>
 
                     <details>
-                        <summary>Then how do push notifications work?</summary>
-                        <p>Apple requires developer credentials to send a push, which self-hosters
-                        shouldn't need to obtain. So the app registers its Apple push token with a small
+                        <summary>How do push notifications work?</summary>
+                        <p>The iOS app registers with a small
                         relay run by the developer; your server signs a notification, the relay hands it
-                        to Apple, Apple delivers it. The relay never sees your username, password,
-                        library or listening history.</p>
-                        <p>If you'd rather it didn't exist: point the app at your own relay, or give your
-                        server its own Apple push credentials and skip the relay entirely.</p>
+                        to Apple, Apple delivers it to your device. The relay never sees any information other than the origin of the request and the type of notification being sent to help catch errors.</p>
+                        <p>If you prefer not to use the relay, you can turn off notifications.</p>
                     </details>
 
                     <details>
                         <summary>Does my server need to be exposed to the internet?</summary>
-                        <p>Only if you want to use it away from home. Plenty of people run it on the LAN
-                        and reach it over a VPN or a tunnel. If you do expose it, put it behind HTTPS and
-                        change the default admin PIN and pre-seeded API key first.</p>
+                        <p>Technically, no. You will not be able to access your server from outside your local network, and downloads and many tools will not be possible. An Internet connection is highly recommended.</p>
                     </details>
                 </div>
 
@@ -154,23 +117,18 @@
                 <div class="faq">
                     <details>
                         <summary>Where does the music come from?</summary>
-                        <p>Wherever you point it. Nudibranch imports files you already have, and — if you
-                        configure them — can fetch from sources like a
-                        <a href="https://github.com/slskd/slskd">slskd</a> instance or yt-dlp. What you
-                        download, and whether you're entitled to it, is between you and the law where you
-                        live.</p>
+                        <p>Your own personal library, or downloaded from sources like
+                        <a href="https://www.slsknet.org/">SoulSeek</a> or YouTube.  (Nudibranch and it's developers do not condone piracy. Only share and download music you own.)</p>
                     </details>
 
                     <details>
-                        <summary>Will it reorganise my existing files?</summary>
-                        <p>Not without asking. Imports, metadata edits and maintenance tools stage their
-                        changes as proposals that you approve or reject. Deletions go to a trash folder
-                        and are kept for a configurable retention period before being purged.</p>
+                        <summary>Will it reorganiseor edit my existing files?</summary>
+                        <p>Yes if you import them into your library, they will be sorted and updated. This will not happen without explicit instruction.</p>
                     </details>
 
                     <details>
                         <summary>Can other people use my server?</summary>
-                        <p>Yes — it's multi-user, with per-flow permissions and per-device sessions. You
+                        <p>Yes! Nudibranch supports multiple users with individual permissions. You
                         can give someone the ability to listen and request music without giving them the
                         ability to approve downloads or run maintenance tools.</p>
                     </details>
@@ -178,14 +136,13 @@
                     <details>
                         <summary>Can I automate things?</summary>
                         <p>Yes. Automations are trigger → action → notify: fire on a schedule, an
-                        interval, a webhook, a Shortcut, or an event like a finished download or a matched
-                        wishlist item.</p>
+                        interval, a webhook, an iOS Shortcut, or an event</p>
                     </details>
                 </div>
 
                 <h2>Still stuck?</h2>
-                <p>The <a href="/docs">documentation</a> goes deeper, and the
-                <a href="/contact">contact page</a> has the ways to reach a human.</p>
+                <p>The <a href="/docs">documentation</a> goes deeper, and you can reach the developer on the
+                <a href="/contact">contact page.</a></p>
             </main>
         </div>
 
