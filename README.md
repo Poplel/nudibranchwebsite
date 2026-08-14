@@ -17,7 +17,6 @@ docs/index.html       → /docs
 contact/index.html    → /contact
 privacy-policy/       → /privacy-policy
 404.html              → not-found page
-privacy.html          → redirect stub for the old /privacy.html URL
 style.css             → shared styles (root-absolute: /style.css)
 ```
 
