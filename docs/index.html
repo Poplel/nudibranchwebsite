@@ -8,6 +8,7 @@
     <link rel="icon" href="/logo.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="/style.css">
+    <script src="/sidebar.js" defer></script>
 </head>
 <body>
     <div class="window app-window">
@@ -21,83 +22,24 @@
         </div>
 
         <div class="app-body">
-            <!-- ==== SIDEBAR (kept identical on every page — update all pages together) ====
-                 On docs pages the tree is expanded (<details open>); elsewhere it starts closed. -->
             <nav class="sidebar">
-                <div class="window">
-                    <div class="window-body brand">
-                        <img src="/logo.png" alt="Nudibranch">
-                        <span class="brand-name">Nudibranch</span>
-                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                <!-- Filled in from /sidebar.html by /sidebar.js. Edit the nav there. -->
+                <noscript>
+                    <div class="window nav">
+                        <div class="window-body">
+                            <p class="nav-heading">Nudibranch</p>
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/guide">Guide</a></li>
+                                <li><a href="/faq">FAQ</a></li>
+                                <li><a href="/docs">Documentation</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="window nav">
-                    <div class="window-body">
-                        <p class="nav-heading">Nudibranch</p>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/guide">Guide</a></li>
-                            <li><a href="/faq">FAQ</a></li>
-                            <li>
-                                <!-- Docs tree. "Documentation" is the root node and the sections
-                                     hang off it. Child pages are not written yet; when a page
-                                     lands, swap its <span class="pending"> for
-                                     <a href="/docs/&lt;slug&gt;">...</a>. Planned slugs match the
-                                     filenames in NudibranchDocs. -->
-                                <ul class="tree-view">
-                                    <li>
-                                        <details open>
-                                            <summary class="section"><a href="/docs" class="active">Documentation</a></summary>
-                                            <ul>
-                                                <li>
-                                                    <details open>
-                                                        <summary class="section">Server</summary>
-                                                        <ul>
-                                                            <li><span class="pending" title="Coming soon">Architecture</span></li>
-                                                            <li><span class="pending" title="Coming soon">API Reference</span></li>
-                                                            <li><span class="pending" title="Coming soon">Background Tasks</span></li>
-                                                            <li><span class="pending" title="Coming soon">Permissions</span></li>
-                                                        </ul>
-                                                    </details>
-                                                </li>
-                                                <li>
-                                                    <details open>
-                                                        <summary class="section">iOS</summary>
-                                                        <ul>
-                                                            <li><span class="pending" title="Coming soon">iOS App</span></li>
-                                                            <li><span class="pending" title="Coming soon">Push Implementation</span></li>
-                                                            <li><span class="pending" title="Coming soon">APNS Proxy</span></li>
-                                                        </ul>
-                                                    </details>
-                                                </li>
-                                                <li>
-                                                    <details open>
-                                                        <summary class="section">Web player</summary>
-                                                        <ul>
-                                                            <li><span class="pending" title="Coming soon">Player Diagnostics</span></li>
-                                                        </ul>
-                                                    </details>
-                                                </li>
-                                            </ul>
-                                        </details>
-                                    </li>
-                                </ul>
-                                <p class="nav-note">Pages coming soon.</p>
-                            </li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li><a href="/privacy-policy">Privacy Policy</a></li>
-                        </ul>
-                        <hr>
-                        <p class="nav-heading">Elsewhere</p>
-                        <ul>
-                            <li><a href="https://github.com/Poplel/Nudibranch">Server on GitHub</a></li>
-                            <li><a href="https://poplel.xyz">poplel.xyz</a></li>
-                        </ul>
-                    </div>
-                </div>
+                </noscript>
             </nav>
-            <!-- ==== /SIDEBAR ==== -->
 
             <main class="content sunken-panel">
                 <h1>Documentation</h1>
