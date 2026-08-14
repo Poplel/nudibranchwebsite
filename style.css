@@ -105,13 +105,21 @@ body {
 
 /* ---- Docs tree in the sidebar ---- */
 
-/* Padding is left to 98.css (6px) — its dotted connector offsets assume it. */
+/* The tree sits flush in the sidebar rather than in its own sunken white box,
+   so 98.css's panel background and inset border are both dropped here. */
 .nav .tree-view {
-    margin: 3px 0 4px 8px;
+    background: transparent;
+    box-shadow: none;
+    margin: 2px 0 3px;
+    padding: 0 0 0 6px;
     font-size: 11px;
 }
 
 .nav .tree-view ul { list-style: none; }
+
+/* 98.css masks the trailing bit of each branch's dotted line with a #fff block.
+   With no white panel behind it that mask has to match the sidebar instead. */
+.nav .tree-view ul > li:last-child:after { background: silver; }
 
 .nav .tree-view a {
     display: inline-block;
@@ -123,12 +131,18 @@ body {
     color: #fff;
 }
 
+.nav .tree-view a:hover { text-decoration: underline; }
+
 .nav .tree-view summary {
     cursor: pointer;
     padding: 1px 0;
 }
 
 .nav .tree-view summary.section { font-weight: bold; }
+
+/* "Documentation" is the tree root and doubles as a top-level nav link, so it
+   keeps the flat nav items' hit area instead of the tighter child padding. */
+.nav .tree-view > li > details > summary > a { padding: 2px 3px; }
 
 /* Docs pages that don't exist yet — rendered as plain text, not links. */
 .nav .tree-view .pending {
