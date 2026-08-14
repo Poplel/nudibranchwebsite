@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nudibranch</title>
-    <meta name="description" content="Nudibranch — a self-hosted music library manager and player, with an app for iPhone, iPad and Mac.">
+    <meta name="description" content="Nudibranch — a self-hosted music library manager and player">
     <link rel="icon" href="/logo.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="/style.css">
@@ -21,13 +21,12 @@
         </div>
 
         <div class="app-body">
-            <!-- ==== SIDEBAR (kept identical on every page — update all pages together) ==== -->
             <nav class="sidebar">
                 <div class="window">
                     <div class="window-body brand">
                         <img src="/logo.png" alt="Nudibranch">
                         <span class="brand-name">Nudibranch</span>
-                        <span class="brand-sub">Self-hosted music,<br>on your phone</span>
+                        <span class="brand-sub">Self-hosted music library manager and player</span>
                     </div>
                 </div>
 
@@ -39,11 +38,6 @@
                             <li><a href="/guide">Guide</a></li>
                             <li><a href="/faq">FAQ</a></li>
                             <li>
-                                <!-- Docs tree. "Documentation" is the root node and the sections
-                                     hang off it. Child pages are not written yet; when a page
-                                     lands, swap its <span class="pending"> for
-                                     <a href="/docs/&lt;slug&gt;">...</a>. Planned slugs match the
-                                     filenames in NudibranchDocs. -->
                                 <ul class="tree-view">
                                     <li>
                                         <details open>
@@ -95,49 +89,49 @@
                     </div>
                 </div>
             </nav>
-            <!-- ==== /SIDEBAR ==== -->
-
             <main class="content sunken-panel">
                 <h1>Nudibranch</h1>
                 <p class="meta">A self-hosted music library manager &amp; player, with an app for iPhone, iPad and Mac.</p>
 
                 <div class="callout">
-                    <p><strong>Nudibranch is a remote.</strong> Your music, playlists and
-                    listening history live on a server you run. The app talks to that server and nothing else.</p>
+                    <p><strong>TLDR; Nudibranch is split into two parts, a server that manages your library and downloads, and a client application for controlling the server and playing music.</strong> <br>Your music, playlists and
+                    podcasts live on a server you run in Docker, and the app or web client connect to the server via an API.<br><strong>To get started visit the guide <a href="/guide">here</a></strong></p>
                 </div>
 
-                <h2>What it does</h2>
+                <h2>What you can do with Nudibranch</h2>
                 <ul>
-                    <li>Browse and play your library — offline-first, with downloads for the road.</li>
-                    <li>Review and approve library changes: imports, downloads, metadata tools.</li>
-                    <li>Podcasts, playlists, and a wishlist for things you don't own yet.</li>
-                    <li>Background audio, lock-screen transport, Siri and Shortcuts.</li>
-                    <li>Automations: a trigger, an action, and a notification when it's done.</li>
+                    <li>Browse and play your personal music library and podcasts</li>
+                    <li>Request and approve new music, and automatically download lossless files via SoulSeek or YTDLP</li>
+                    <li>Optional Jellyfin server integration for music and playlists</li>
+                    <li>Granular permissions for users so you don't have to give full access to let people play music</li>
+                    <li>Manual approval for changes, with automatic backups and library management tools</li>
+                    <li>Custom automations for a wide variety of tasks, triggered by IOS shortcuts, webhooks, cron, or manually</li>
+                    <li>Robust Siri and IOS shortcuts integration</li>
+                    <li>Offline playback and automatic downloads for music and podcasts on the IOS app</li>
                 </ul>
 
-                <h2>How it fits together</h2>
-                <p>The server runs in Docker alongside <a href="https://jellyfin.org">Jellyfin</a>, which
-                holds and serves the music itself. Nudibranch handles everything around it — finding
-                music, tagging it, staging it, importing it, and keeping the library tidy — and gives
-                you a web player and an iOS app on top.</p>
-                <p>New to it? Skim the <a href="/faq">FAQ</a> — a full
-                <a href="/guide">Guide</a> is on the way.</p>
+                <h2>How it's set up</h2>
+                <p>The server runs in a 2 to 3 container Docker stack with the API, Web UI, (optional) and SLSKD for downloading music. The Nudibranch API handles finding
+                music, tagging it, staging it, importing it, and routine maintenance. The Web UI provides an easy to access interface for managing your library and playing music. SLSKD interacts with the SoulSeek network to provide music downloads. (Nudibranch and it's developers do not condone piracy. Only share and download music you own.) <br>
+                The app connects to the server via the API, and can be remotely triggered and sent notifications through the APNS proxy provided by the developer.
+                </p>
+                <p>Any questions? Check the <a href="/faq">FAQ</a> — a full
+                <a href="/guide">install guide</a> is being written.</p>
 
                 <h2>Getting it</h2>
                 <p>The server is open source and available on
-                <a href="https://github.com/Poplel/Nudibranch">GitHub</a>. The iOS app is on its way to
-                the App Store.</p>
-
-                <h2>Privacy</h2>
-                <p>Nudibranch collects nothing. There is no analytics, no tracking and no account with us —
-                read the <a href="/privacy-policy">privacy policy</a> for the details.</p>
+                <a href="https://github.com/Poplel/Nudibranch">GitHub</a> under the GPLv3 license. Two Docker images are available for the API and Web UI, nudibranch-api and nudibranch-web. The iOS/Mac app being developed and will be available on the App Store.</p>
+                
+                <h2>What is a Nudibranch?</h2>
+                <p>Nudibranchs (/'nju:dɪbræŋk/) are soft-bodied marine gastropod molluscs of the order Nudibranchia, commonly known as sea slugs. The program is named after Glaucus atlanticus, a nudibranch whose <strong>jelly</strong>-like cerata are arranged along its back like wings or <strong>fins</strong>.<br> The name was chosen both because the program was designed with Jellyfin in mind and because the animal is my favourite.
+                </p>
             </main>
         </div>
 
         <div class="status-bar">
             <p class="status-bar-field">nudibranch.poplel.xyz</p>
             <p class="status-bar-field">Self-hosted</p>
-            <p class="status-bar-field">Ready</p>
+            <p class="status-bar-field">Open-Source</p>
         </div>
     </div>
 </body>
